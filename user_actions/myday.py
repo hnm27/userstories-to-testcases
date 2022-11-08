@@ -8,51 +8,16 @@ from selenium.webdriver.common.by import By
 from helpers.selenium_helper import initialize_chrome_webdriver, type_text
 
 
-class MyDay(unittest.TestCase):
+class MyDay:
     """
-    Test case implementations for MyDay.me web application
+    User actions for MyDay.me web application
     """
 
-    def setUp(self) -> None:
+    def __init__(self) -> None:
         """
         Initialize the Chrome driver
         """
         self.driver = initialize_chrome_webdriver()
-
-    def test_valid_schedule_session(self):
-        """
-        Assert successful session scheduling for a professional
-        """
-        # login to schedule a session with correct credentials
-        self.login()
-        # wait for the page to load
-        time.sleep(3)
-
-        try:
-            # skip introduction (press skip)
-            self.driver.find_element(by=By.XPATH,
-                                     value="/html/body/div/div[2]/div[3]/div/div[2]/div[2]/div[2]/a").click()
-            time.sleep(2)
-        except NoSuchElementException as e:
-            print(f"No Skip intro button: {e}")
-
-        self.navigate_to_form()
-        self.choose_date()
-        self.choose_time()
-        self.enter_email()
-
-        # add note
-        note_field = self.driver.find_element(by=By.XPATH,
-                                              value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[11]/div[2]/div/textarea")
-        note_field.send_keys("This is a test!")
-        # press save
-        self.driver.find_element(by=By.XPATH,
-                                 value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[12]/button").click()
-        time.sleep(3)
-
-    def test_wrong_date(self):
-        pass
-        # "/html/body/div[1]/span/div/div/div"
 
     def login(self, email: str = "humaidalimollah73@gmail.com", password: str = "userstoriestotestcases"):
         """
@@ -82,6 +47,19 @@ class MyDay(unittest.TestCase):
         time.sleep(2)
         # assert you are logged in as a Professional
         assert self.driver.current_url == "https://app.myday.me/professional/calendar"
+        time.sleep(3)
+
+    def skip_intro(self):
+        """
+        Skip intro
+        """
+        try:
+            # skip introduction (press skip)
+            self.driver.find_element(by=By.XPATH,
+                                     value="/html/body/div/div[2]/div[3]/div/div[2]/div[2]/div[2]/a").click()
+            time.sleep(2)
+        except NoSuchElementException as e:
+            print(f"No Skip intro button: {e}")
 
     def navigate_to_form(self):
         """
@@ -155,3 +133,21 @@ class MyDay(unittest.TestCase):
         email_field = self.driver.find_element(by=By.XPATH,
                                                value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[9]/div/div/input")
         email_field.send_keys(email)
+
+    def enter_note(self):
+        """
+        Enter note field
+        """
+        # add note
+        note_field = self.driver.find_element(by=By.XPATH,
+                                              value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[11]/div[2]/div/textarea")
+        note_field.send_keys("This is a test!")
+
+    def press_save(self):
+        """
+        Press save to create an event
+        """
+        # press save
+        self.driver.find_element(by=By.XPATH,
+                                 value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[12]/button").click()
+        time.sleep(3)
