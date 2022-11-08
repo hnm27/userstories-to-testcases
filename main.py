@@ -11,7 +11,7 @@ def main():
 
     try:
         driver.get('http://webcode.me')
-        driver.find_element(by=By.ID,value='login')
+        driver.find_element(by=By.ID, value='login')
         # print(driver.title)/
         assert 'My html page' == driver.title
     finally:
@@ -19,4 +19,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    print("hello")

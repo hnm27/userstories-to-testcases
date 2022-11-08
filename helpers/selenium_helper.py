@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def initialize_chrome_webdriver() -> WebDriver:
@@ -13,7 +14,7 @@ def initialize_chrome_webdriver() -> WebDriver:
     Returns:
         Selenium.Webdriver
     """
-    return webdriver.Chrome()
+    return webdriver.Chrome(ChromeDriverManager().install())
 
 
 def initialize_headless_driver() -> WebDriver:
