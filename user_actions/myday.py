@@ -45,9 +45,6 @@ class MyDay:
                                  value="/html/body/div/main/div/div/div[1]/div/div/div/form/button").click()
         # wait for the page to load
         time.sleep(2)
-        # assert you are logged in as a Professional
-        assert self.driver.current_url == "https://app.myday.me/professional/calendar"
-        time.sleep(3)
 
     def skip_intro(self):
         """
@@ -59,7 +56,7 @@ class MyDay:
                                      value="/html/body/div/div[2]/div[3]/div/div[2]/div[2]/div[2]/a").click()
             time.sleep(2)
         except NoSuchElementException as e:
-            print(f"No Skip intro button: {e}")
+            print(f"No Skip intro button present")
 
     def navigate_to_form(self):
         """
@@ -150,4 +147,4 @@ class MyDay:
         # press save
         self.driver.find_element(by=By.XPATH,
                                  value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[12]/button").click()
-        time.sleep(3)
+        time.sleep(2)
