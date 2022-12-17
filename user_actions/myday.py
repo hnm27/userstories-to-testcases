@@ -26,7 +26,7 @@ class MyDay:
         # Navigate to login page
         self.driver.get("https://app.myday.me/auth/signin")
         # wait for the page to load
-        time.sleep(2)
+        time.sleep(3)
         # assert you are on the correct page
         assert "MyDay" in self.driver.title
         # accept terms (Click on "I understand")
@@ -41,10 +41,11 @@ class MyDay:
         type_text(element=email_field, text=email)
         type_text(element=password_field, text=password)
         # submit form (Click Login)
+        time.sleep(1)
         self.driver.find_element(by=By.XPATH,
                                  value="/html/body/div/main/div/div/div[1]/div/div/div/form/button").click()
         # wait for the page to load
-        time.sleep(2)
+        time.sleep(5)
 
     def skip_intro(self):
         """
@@ -65,10 +66,10 @@ class MyDay:
         # click on create an event
         self.driver.find_element(by=By.XPATH,
                                  value="/html/body/div/div[1]/div[1]/div[2]/button").click()
-        time.sleep(1)
+        time.sleep(2)
         # choose option
         self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[1]/div[2]/div/button[2]").click()
-        time.sleep(1)
+        time.sleep(2)
 
     def choose_date(self, past: bool = False):
         """
@@ -130,6 +131,7 @@ class MyDay:
         email_field = self.driver.find_element(by=By.XPATH,
                                                value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[9]/div/div/input")
         email_field.send_keys(email)
+        time.sleep(2)
 
     def enter_note(self):
         """
@@ -137,7 +139,7 @@ class MyDay:
         """
         # add note
         note_field = self.driver.find_element(by=By.XPATH,
-                                              value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[11]/div[2]/div/textarea")
+                                              value="/html/body/div/div[2]/div[3]/div/form/div[2]/div[12]/div[2]/div/textarea")
         note_field.send_keys("This is a test!")
 
     def press_save(self):
@@ -146,5 +148,5 @@ class MyDay:
         """
         # press save
         self.driver.find_element(by=By.XPATH,
-                                 value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[12]/button").click()
+                                 value="/html/body/div/div[2]/div[3]/div/form/div[2]/div[13]/button").click()
         time.sleep(2)

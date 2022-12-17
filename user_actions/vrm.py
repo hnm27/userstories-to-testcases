@@ -34,7 +34,7 @@ class VRM:
                                  value="/html/body/div[2]/section[1]/div/div/div/div[3]/div[3]/div/a[1]").click()
         time.sleep(3)
 
-    def get_installation_by_id(self, device_id: str):
+    def get_installation_by_id(self, device_id: int):
         """
         Get an installation by inputting the id of the installation
         Args:
@@ -45,7 +45,39 @@ class VRM:
 
     def check_last_updated(self):
         """
-        Check when the device was last updated in local time
+        Check if the last updated in local time is displayed
         """
-        pass
-#testing github
+        last_updated_elem = self.driver.find_element(by=By.CLASS_NAME, value='vrm-status__info__value')
+        assert last_updated_elem.text is not None
+        time.sleep(2)
+
+    def check_temperatures(self):
+        """
+        Check if the temperature of water tank and freezer is displayed
+        """
+        freezer_temp_elem = self.driver.find_element(by=By.XPATH,
+                                                     value='/html/body/div[2]/div[2]/div[2]/div/div[1]/div/div/div[2]/div/div[1]/div/div[1]')
+        assert freezer_temp_elem.text is not None
+        time.sleep(2)
+        water_temp_elem = self.driver.find_element(by=By.XPATH,
+                                                   value='/html/body/div[2]/div[2]/div[2]/div/div[1]/div/div/div[2]/div/div[1]/div/div[2]')
+        assert water_temp_elem.text is not None
+        time.sleep(2)
+
+    def check_water_tank_level(self):
+        """
+        Check if fresh water tank level is displayed
+        """
+        water_level_elem = self.driver.find_element(by=By.XPATH,
+                                                    value='//*[@id="dashboard-wrapper"]/div[1]/div/div/div[2]/div/div[2]/div/div/div/div[2]/div[2]/span')
+        assert water_level_elem.text is not None
+        time.sleep(2)
+
+    def check_alarm_logs(self, device_id: int):
+        """
+        Check if alarm logs are displayed to the user
+        """
+        self.driver.get(f"https://vrm.victronenergy.com/installation/{device_id}/alarmlogs")
+        time.sleep(2)
+        logs_elem = self.driver.find_element(by=By.XPATH, value='/html/body/div[2]/div[2]/div[2]/div')
+        assert logs_elem is not None

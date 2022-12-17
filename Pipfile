@@ -8,6 +8,7 @@ requests = "*"
 selenium = "*"
 webdriver-manager = "*"
 packaging = "*"
+html-testrunner = "*"
 
 [dev-packages]
 

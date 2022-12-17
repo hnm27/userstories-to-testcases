@@ -27,7 +27,7 @@ class TestMyDay(unittest.TestCase):
         self.client.login()
         # assert you are logged in as a Professional
         assert self.client.driver.current_url == "https://app.myday.me/professional/calendar"
-
+        time.sleep(2)
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date()
