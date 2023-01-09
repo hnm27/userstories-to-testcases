@@ -55,9 +55,10 @@ class MyDay:
             # skip introduction (press skip)
             self.driver.find_element(by=By.XPATH,
                                      value="/html/body/div/div[2]/div[3]/div/div[2]/div[2]/div[2]/a").click()
-            time.sleep(2)
         except NoSuchElementException as e:
             print(f"No Skip intro button present")
+        finally:
+            time.sleep(2)
 
     def navigate_to_form(self):
         """

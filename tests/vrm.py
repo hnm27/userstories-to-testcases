@@ -20,7 +20,7 @@ class TestVRM(unittest.TestCase):
 
     def test_user_can_monitor_device_info(self):
         """
-        Assert user can monitor device infor for a valid device id
+        Assert user can monitor device info for a valid device id on VRM demo web application
         """
         valid_device_id = 151734
         self.client.load_app()
@@ -60,6 +60,8 @@ class TestVRM(unittest.TestCase):
 
     def test_unidentified_user(self):
         """
-        Assert an invalid email or password raises an error
+        Assert an invalid email or password does not log you in
         """
-        pass  # using the demo version of the webapp
+        self.client.login(username='invalid', password='invalid')
+        # assert not logged in and still on the login page
+        assert self.client.driver.current_url == 'https://vrm.victronenergy.com/login'

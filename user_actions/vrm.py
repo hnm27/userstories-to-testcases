@@ -19,6 +19,28 @@ class VRM:
         """
         self.driver = initialize_chrome_webdriver()
 
+    def login(self, username: str, password: str):
+        """
+        Assert correct login behavior
+        """
+        # Navigate to login page
+        self.driver.get("https://vrm.victronenergy.com/login")
+        # wait for the page to load
+        time.sleep(3)
+        # assert you are on the correct page
+        assert "VRM" in self.driver.title
+        # type email and password
+        email_field = self.driver.find_element(by=By.ID, value="username")
+        password_field = self.driver.find_element(by=By.ID, value="password")
+        type_text(element=email_field, text=username)
+        type_text(element=password_field, text=password)
+        # submit form (Click Login)
+        time.sleep(1)
+        self.driver.find_element(by=By.XPATH,
+                                 value="/html/body/div[2]/div/div[3]/div[2]/div/div/form/div[1]/button").click()
+        # wait for the page to load
+        time.sleep(5)
+
     def load_app(self):
         """
         Navigate to the VRM demo web application

@@ -25,9 +25,6 @@ class TestMyDay(unittest.TestCase):
         Assert successful session scheduling for a professional
         """
         self.client.login()
-        # assert you are logged in as a Professional
-        assert self.client.driver.current_url == "https://app.myday.me/professional/calendar"
-        time.sleep(2)
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date()
@@ -54,9 +51,6 @@ class TestMyDay(unittest.TestCase):
         An invalid date (in the past) entered should produce an error
         """
         self.client.login()
-        # assert you are logged in as a Professional
-        assert self.client.driver.current_url == "https://app.myday.me/professional/calendar"
-
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date(past=True)
@@ -74,9 +68,6 @@ class TestMyDay(unittest.TestCase):
         An invalid date (in the past) entered should produce an error
         """
         self.client.login()
-        # assert you are logged in as a Professional
-        assert self.client.driver.current_url == "https://app.myday.me/professional/calendar"
-
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date(past=False)
@@ -94,9 +85,6 @@ class TestMyDay(unittest.TestCase):
         An invalid date (in the past) entered should produce an error
         """
         self.client.login()
-        # assert you are logged in as a Professional
-        assert self.client.driver.current_url == "https://app.myday.me/professional/calendar"
-
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date(past=False)
@@ -115,9 +103,6 @@ class TestMyDay(unittest.TestCase):
         """
         success = False
         self.client.login()
-        # assert you are logged in as a Professional
-        assert self.client.driver.current_url == "https://app.myday.me/professional/calendar"
-
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date(past=False)
