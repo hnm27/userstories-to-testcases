@@ -18,7 +18,7 @@ interview_transcripts.txt - Contains interview transcripts
 # Instructions to run the project - 
 
 The project dependencies lie inside the Pipfile which has been created using Python's Pipenv tool. <br />
-The project can be cloned and the 'pipenv sync' command can be used to download all dependencies and setup the project. <br />
+The project can be cloned and the 'pipenv sync' command can be used to download all dependencies and setup the project. For more infor visit https://thoughtbot.com/blog/how-to-manage-your-python-projects-with-pipenv <br />
 Test case implementations can be executed directly from the test files inside tests/ or from main.py
 
 
