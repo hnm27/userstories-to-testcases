@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 requests = "*"
 selenium = "*"
+webdriver-manager = "*"
+packaging = "*"
+html-testrunner = "*"
 
 [dev-packages]
 

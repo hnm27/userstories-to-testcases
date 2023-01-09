@@ -1,0 +1,7 @@
+.idea
+.pytest_cache
+.env
+/.pre-commit-config.yaml
+gha-creds-*.json
+__pycache__/
+.python-version

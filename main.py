@@ -1,21 +1,10 @@
-from selenium.webdriver import Chrome
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
+import unittest
+from HtmlTestRunner import HTMLTestRunner
 
 
 def main():
-    opts = Options()
-    opts.headless = True
-
-    driver = Chrome(options=opts, executable_path='chromedriver.exe')
-
-    try:
-        driver.get('http://webcode.me')
-        driver.find_element(by=By.ID,value='login')
-        # print(driver.title)/
-        assert 'My html page' == driver.title
-    finally:
-        driver.quit()
+    modules_to_test = unittest.defaultTestLoader.discover(start_dir='tests/', pattern='*.py', top_level_dir=None)
+    HTMLTestRunner(output='./test-reports').run(modules_to_test)
 
 
 if __name__ == '__main__':

@@ -8,51 +8,16 @@ from selenium.webdriver.common.by import By
 from helpers.selenium_helper import initialize_chrome_webdriver, type_text
 
 
-class MyDay(unittest.TestCase):
+class MyDay:
     """
-    Test case implementations for MyDay.me web application
+    User actions for MyDay.me web application
     """
 
-    def setUp(self) -> None:
+    def __init__(self) -> None:
         """
         Initialize the Chrome driver
         """
         self.driver = initialize_chrome_webdriver()
-
-    def test_valid_schedule_session(self):
-        """
-        Assert successful session scheduling for a professional
-        """
-        # login to schedule a session with correct credentials
-        self.login()
-        # wait for the page to load
-        time.sleep(3)
-
-        try:
-            # skip introduction (press skip)
-            self.driver.find_element(by=By.XPATH,
-                                     value="/html/body/div/div[2]/div[3]/div/div[2]/div[2]/div[2]/a").click()
-            time.sleep(2)
-        except NoSuchElementException as e:
-            print(f"No Skip intro button: {e}")
-
-        self.navigate_to_form()
-        self.choose_date()
-        self.choose_time()
-        self.enter_email()
-
-        # add note
-        note_field = self.driver.find_element(by=By.XPATH,
-                                              value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[11]/div[2]/div/textarea")
-        note_field.send_keys("This is a test!")
-        # press save
-        self.driver.find_element(by=By.XPATH,
-                                 value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[12]/button").click()
-        time.sleep(3)
-
-    def test_wrong_date(self):
-        pass
-        # "/html/body/div[1]/span/div/div/div"
 
     def login(self, email: str = "humaidalimollah73@gmail.com", password: str = "userstoriestotestcases"):
         """
@@ -61,7 +26,7 @@ class MyDay(unittest.TestCase):
         # Navigate to login page
         self.driver.get("https://app.myday.me/auth/signin")
         # wait for the page to load
-        time.sleep(2)
+        time.sleep(3)
         # assert you are on the correct page
         assert "MyDay" in self.driver.title
         # accept terms (Click on "I understand")
@@ -76,12 +41,24 @@ class MyDay(unittest.TestCase):
         type_text(element=email_field, text=email)
         type_text(element=password_field, text=password)
         # submit form (Click Login)
+        time.sleep(1)
         self.driver.find_element(by=By.XPATH,
                                  value="/html/body/div/main/div/div/div[1]/div/div/div/form/button").click()
         # wait for the page to load
-        time.sleep(2)
-        # assert you are logged in as a Professional
-        assert self.driver.current_url == "https://app.myday.me/professional/calendar"
+        time.sleep(5)
+
+    def skip_intro(self):
+        """
+        Skip intro
+        """
+        try:
+            # skip introduction (press skip)
+            self.driver.find_element(by=By.XPATH,
+                                     value="/html/body/div/div[2]/div[3]/div/div[2]/div[2]/div[2]/a").click()
+        except NoSuchElementException as e:
+            print(f"No Skip intro button present")
+        finally:
+            time.sleep(2)
 
     def navigate_to_form(self):
         """
@@ -90,10 +67,10 @@ class MyDay(unittest.TestCase):
         # click on create an event
         self.driver.find_element(by=By.XPATH,
                                  value="/html/body/div/div[1]/div[1]/div[2]/button").click()
-        time.sleep(1)
+        time.sleep(2)
         # choose option
         self.driver.find_element(by=By.XPATH, value="/html/body/div/div[1]/div[1]/div[2]/div/button[2]").click()
-        time.sleep(1)
+        time.sleep(2)
 
     def choose_date(self, past: bool = False):
         """
@@ -155,3 +132,22 @@ class MyDay(unittest.TestCase):
         email_field = self.driver.find_element(by=By.XPATH,
                                                value="/html/body/div[1]/div[2]/div[3]/div/form/div[2]/div[9]/div/div/input")
         email_field.send_keys(email)
+        time.sleep(2)
+
+    def enter_note(self):
+        """
+        Enter note field
+        """
+        # add note
+        note_field = self.driver.find_element(by=By.XPATH,
+                                              value="/html/body/div/div[2]/div[3]/div/form/div[2]/div[12]/div[2]/div/textarea")
+        note_field.send_keys("This is a test!")
+
+    def press_save(self):
+        """
+        Press save to create an event
+        """
+        # press save
+        self.driver.find_element(by=By.XPATH,
+                                 value="/html/body/div/div[2]/div[3]/div/form/div[2]/div[13]/button").click()
+        time.sleep(2)
