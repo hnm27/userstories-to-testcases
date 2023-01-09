@@ -4,8 +4,8 @@
 Humaid Mollah, Petra van den Bos (Formal Methods and Tools Group, University of Twente, Enschede, The Netherlands)
 
 This repository contains the following:
-1. Source code for case studies performed in the thesis paper
-2. Interview transcripts conducted on with developers and testers software agency El nino
+1. Source code for case studies performed in this research
+2. Interview transcripts conducted on the software developers and testers of digital development agency: El nino, Enschede, The Netherlands.
 
 # Project Structure :
 
