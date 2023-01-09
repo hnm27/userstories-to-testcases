@@ -1,7 +1,7 @@
 # userstories-to-testcases
 
 # Research Paper : User Stories applied for end-to-end web testing 
-- Humaid Mollah, Petra van den Bos (Formal Methods and Tools Group, University of Twente, Enschede, The Netherlands)
+Humaid Mollah, Petra van den Bos (Formal Methods and Tools Group, University of Twente, Enschede, The Netherlands)
 
 This repository contains the following:
 1. Source code for case studies performed in the thesis paper
