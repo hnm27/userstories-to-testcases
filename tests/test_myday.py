@@ -12,6 +12,9 @@ from user_actions.myday import MyDay
 class TestMyDay(unittest.TestCase):
     """
     Test case implementations for MyDay.me web application
+    To execute this test file:
+        1. Create an account on https://app.myday.me if you don't have one already.
+        1. Insert email and password in the fields below.
     """
 
     def setUp(self) -> None:
@@ -19,12 +22,16 @@ class TestMyDay(unittest.TestCase):
         Initialize the Chrome driver
         """
         self.client = MyDay()
+        self.email = ""  # TODO
+        self.password = ""  # TODO
 
     def test_event_scheduled_successfully(self):
         """
         Assert successful session scheduling for a professional
         """
-        self.client.login()
+        assert self.email != "" and self.password != "", "To run this test case, enter the email and password of your " \
+                                                         "Myday.me account in the file TODOs"
+        self.client.login(email=self.email, password=self.password)
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date()
@@ -50,7 +57,9 @@ class TestMyDay(unittest.TestCase):
         """
         An invalid date (in the past) entered should produce an error
         """
-        self.client.login()
+        assert self.email != "" and self.password != "", "To run this test case, enter the email and password of your " \
+                                                         "Myday.me account in the file TODOs"
+        self.client.login(email=self.email, password=self.password)
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date(past=True)
@@ -67,7 +76,9 @@ class TestMyDay(unittest.TestCase):
         """
         An invalid date (in the past) entered should produce an error
         """
-        self.client.login()
+        assert self.email != "" and self.password != "", "To run this test case, enter the email and password of your " \
+                                                         "Myday.me account in the file TODOs"
+        self.client.login(email=self.email, password=self.password)
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date(past=False)
@@ -84,7 +95,9 @@ class TestMyDay(unittest.TestCase):
         """
         An invalid date (in the past) entered should produce an error
         """
-        self.client.login()
+        assert self.email != "" and self.password != "", "To run this test case, enter the email and password of your " \
+                                                         "Myday.me account in the file TODOs"
+        self.client.login(email=self.email, password=self.password)
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date(past=False)
@@ -101,8 +114,10 @@ class TestMyDay(unittest.TestCase):
         """
         No clients chosen should not allow professionals to create an event
         """
+        assert self.email != "" and self.password != "", "To run this test case, enter the email and password of your " \
+                                                         "Myday.me account in the file TODOs"
         success = False
-        self.client.login()
+        self.client.login(email=self.email, password=self.password)
         self.client.skip_intro()
         self.client.navigate_to_form()
         self.client.choose_date(past=False)

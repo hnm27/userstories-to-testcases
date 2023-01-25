@@ -19,7 +19,7 @@ class MyDay:
         """
         self.driver = initialize_chrome_webdriver()
 
-    def login(self, email: str = "humaidalimollah73@gmail.com", password: str = "userstoriestotestcases"):
+    def login(self, email: str, password: str):
         """
         Assert correct login behavior
         """

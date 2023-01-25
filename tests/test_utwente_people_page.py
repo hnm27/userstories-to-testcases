@@ -1,6 +1,6 @@
 import unittest
 
-from selenium.common import NoSuchElementException
+from selenium.common import NoSuchElementException, InvalidArgumentException
 
 from user_actions.utwente_people_page import Lepaya
 
@@ -23,9 +23,9 @@ class TestUtwentePeopleSearch(unittest.TestCase):
         self.client.access_webpage()
         self.client.search(query='petra van den bos')
         self.client.add_filter(filter_num=3)
-        self.client.get_contact_details() # fix logging into google chrome issue
+        self.client.get_contact_details()  # depends on search query
 
-    def test_invalid_query(self):
+    def test_unidentified_employee(self):
         """
         Test invalid query search
         """
@@ -38,9 +38,9 @@ class TestUtwentePeopleSearch(unittest.TestCase):
             success = True
         assert success
 
-    def test_invalid_filter(self):
+    def test_non_matching_filter(self):
         """
-        Test invalid query search
+        Test invalid query filter combination search
         """
         success = False
         self.client.access_webpage()
@@ -51,4 +51,3 @@ class TestUtwentePeopleSearch(unittest.TestCase):
         except NoSuchElementException:
             success = True
         assert success
-
