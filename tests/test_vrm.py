@@ -8,8 +8,9 @@ from user_actions.vrm import VRM
 
 class TestVRM(unittest.TestCase):
     """
-    Test case implementations for MyDay.me web application
+    Test case implementations for VRM web application
     """
+    # Change to True when connected to a device and enter device number in test case -  test_device_error
     connected_to_device = False
 
     def setUp(self) -> None:
