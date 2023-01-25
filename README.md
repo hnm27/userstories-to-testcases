@@ -17,7 +17,7 @@ interview_transcripts.txt - Contains interview transcripts
 
 # Instructions to run the project - 
 
-Note : the testfile test_myday contains 2 TODOS which are test inputs required to run the test cases. If these are not completed 5/6 test cases will fail.
+Note : the testfile test_myday.py contains 2 TODOS which are test inputs required to run the test cases. If these are not completed 5/6 test cases will fail.
 
 The project dependencies lie inside the Pipfile which has been created using Python's Pipenv tool. <br />
 
