@@ -8,6 +8,11 @@ This repository contains the following:
 1. Source code for case studies performed in this research
 2. Interview transcripts from the interviews held with the software developers and testers of the digital development agency: El nino, Enschede, The Netherlands.
 
+# Case study web applications:
+MyDay: https://app.myday.me<br />
+VRM: https://vrm.victronenergy.com<br />
+Utwente People: https://people.utwente.nl/
+
 # Project Structure :
 
 /tests -  Contains test case implementations for Myday, VRM, and Utwente People web applications <br />
