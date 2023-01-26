@@ -20,12 +20,11 @@ interview_transcripts.txt - Contains interview transcripts
 [ Note : the testfile test_myday.py contains 2 TODOS which are test inputs required to run the test cases in this test class. If these are not completed 5/6 test cases will fail with the following error: "AssertionError: To run this test case, enter the email and password of your Myday.me account in the file TODOs" ] 
 
 The project dependencies lie inside the Pipfile which has been created using Python's Pipenv tool. <br />
-
-If you don't have Pipenv install, run the following command on your termnal: 
+If you don't have Pipenv install on your device, run the following command on your termnal: 
 pip install pipenv
 
-To install the project dependencies use the following commands:
-1. pipenv sync (to download all dependencies in the Pipfile)
+To install the project dependencies, use the following commands:
+1. pipenv sync (to download all dependencies from the Pipfile)
 2. pipenv shell (to create a new virtual environment and activate it)
 
 To run all tests in the /tests directory, run the following command:
