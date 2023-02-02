@@ -8,13 +8,14 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def initialize_chrome_webdriver() -> WebDriver:
+def initialize_webdriver() -> WebDriver:
     """
     Initialize the Selenium webdriver
     Returns:
         Selenium.Webdriver
     """
-    return webdriver.Chrome(ChromeDriverManager().install())
+    return webdriver.Chrome(ChromeDriverManager().install()) # for chrome users
+    # return webdriver.Firefox() # for firefox users
 
 
 def initialize_headless_driver() -> WebDriver:

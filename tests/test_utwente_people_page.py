@@ -1,6 +1,6 @@
 import unittest
 
-from selenium.common import NoSuchElementException, InvalidArgumentException
+from selenium.common import NoSuchElementException
 
 from user_actions.utwente_people_page import Lepaya
 
@@ -51,3 +51,9 @@ class TestUtwentePeopleSearch(unittest.TestCase):
         except NoSuchElementException:
             success = True
         assert success
+
+    def tearDown(self) -> None:
+        """
+        Close the driver
+        """
+        self.client.driver.close()

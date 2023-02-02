@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 
-from helpers.selenium_helper import initialize_chrome_webdriver, type_text
+from helpers.selenium_helper import initialize_webdriver, type_text
 
 
 class VRM:
@@ -17,7 +17,7 @@ class VRM:
         """
         Initialize the Chrome driver
         """
-        self.driver = initialize_chrome_webdriver()
+        self.driver = initialize_webdriver()
 
     def login(self, username: str, password: str):
         """

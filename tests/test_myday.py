@@ -1,11 +1,8 @@
-import time
 import unittest
 
-from selenium import webdriver
-from selenium.common import NoSuchElementException, ElementClickInterceptedException
+from selenium.common import ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 
-from helpers.selenium_helper import initialize_chrome_webdriver, type_text
 from user_actions.myday import MyDay
 
 
@@ -16,21 +13,21 @@ class TestMyDay(unittest.TestCase):
         1. Create an account on https://app.myday.me if you don't have one already.
         1. Insert email and password in the fields below.
     """
+    email = ""  # TODO
+    password = ""  # TODO
 
     def setUp(self) -> None:
         """
         Initialize the Chrome driver
         """
         self.client = MyDay()
-        self.email = ""  # TODO
-        self.password = ""  # TODO
 
+    @unittest.skipIf(email == "" and password == "",
+                     "To run this test case, enter the email and password of your ""Myday.me account in the file TODOs")
     def test_event_scheduled_successfully(self):
         """
         Assert successful session scheduling for a professional
         """
-        assert self.email != "" and self.password != "", "To run this test case, enter the email and password of your " \
-                                                         "Myday.me account in the file TODOs"
         self.client.login(email=self.email, password=self.password)
         self.client.skip_intro()
         self.client.navigate_to_form()
@@ -53,12 +50,12 @@ class TestMyDay(unittest.TestCase):
         notification = self.client.driver.find_element(by=By.XPATH, value="/html/body/div/span/div/div/div").text
         assert "error" in notification
 
+    @unittest.skipIf(email == "" and password == "",
+                     "To run this test case, enter the email and password of your ""Myday.me account in the file TODOs")
     def test_invalid_date_field(self):
         """
         An invalid date (in the past) entered should produce an error
         """
-        assert self.email != "" and self.password != "", "To run this test case, enter the email and password of your " \
-                                                         "Myday.me account in the file TODOs"
         self.client.login(email=self.email, password=self.password)
         self.client.skip_intro()
         self.client.navigate_to_form()
@@ -72,12 +69,12 @@ class TestMyDay(unittest.TestCase):
         notification = self.client.driver.find_element(by=By.XPATH, value="/html/body/div/span/div/div/div").text
         assert "error" in notification
 
+    @unittest.skipIf(email == "" and password == "",
+                     "To run this test case, enter the email and password of your ""Myday.me account in the file TODOs")
     def test_invalid_time_field(self):
         """
         An invalid date (in the past) entered should produce an error
         """
-        assert self.email != "" and self.password != "", "To run this test case, enter the email and password of your " \
-                                                         "Myday.me account in the file TODOs"
         self.client.login(email=self.email, password=self.password)
         self.client.skip_intro()
         self.client.navigate_to_form()
@@ -91,12 +88,12 @@ class TestMyDay(unittest.TestCase):
         notification = self.client.driver.find_element(by=By.XPATH, value="/html/body/div/span/div/div/div").text
         assert "error" in notification
 
+    @unittest.skipIf(email == "" and password == "",
+                     "To run this test case, enter the email and password of your ""Myday.me account in the file TODOs")
     def test_invalid_client_email(self):
         """
         An invalid date (in the past) entered should produce an error
         """
-        assert self.email != "" and self.password != "", "To run this test case, enter the email and password of your " \
-                                                         "Myday.me account in the file TODOs"
         self.client.login(email=self.email, password=self.password)
         self.client.skip_intro()
         self.client.navigate_to_form()
@@ -110,12 +107,13 @@ class TestMyDay(unittest.TestCase):
         notification = self.client.driver.find_element(by=By.XPATH, value="/html/body/div/span/div/div/div").text
         assert "error" in notification
 
+    @unittest.skipIf(email == "" and password == "",
+                     "To run this test case, enter the email and password of your ""Myday.me account in the file TODOs")
     def test_no_clients_chosen(self):
         """
         No clients chosen should not allow professionals to create an event
         """
-        assert self.email != "" and self.password != "", "To run this test case, enter the email and password of your " \
-                                                         "Myday.me account in the file TODOs"
+
         success = False
         self.client.login(email=self.email, password=self.password)
         self.client.skip_intro()
@@ -130,3 +128,9 @@ class TestMyDay(unittest.TestCase):
             success = True  # element cannot be clicked
         finally:
             assert success
+
+    def tearDown(self) -> None:
+        """
+        Close the driver
+        """
+        self.client.driver.close()
