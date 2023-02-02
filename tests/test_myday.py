@@ -1,11 +1,8 @@
-import time
 import unittest
 
-from selenium import webdriver
-from selenium.common import NoSuchElementException, ElementClickInterceptedException
+from selenium.common import ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 
-from helpers.selenium_helper import initialize_chrome_webdriver, type_text
 from user_actions.myday import MyDay
 
 

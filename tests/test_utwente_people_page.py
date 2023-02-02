@@ -1,6 +1,6 @@
 import unittest
 
-from selenium.common import NoSuchElementException, InvalidArgumentException
+from selenium.common import NoSuchElementException
 
 from user_actions.utwente_people_page import Lepaya
 
