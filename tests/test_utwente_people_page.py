@@ -51,3 +51,9 @@ class TestUtwentePeopleSearch(unittest.TestCase):
         except NoSuchElementException:
             success = True
         assert success
+
+    def tearDown(self) -> None:
+        """
+        Close the driver
+        """
+        self.client.driver.close()

@@ -66,3 +66,9 @@ class TestVRM(unittest.TestCase):
         self.client.login(username='invalid', password='invalid')
         # assert not logged in and still on the login page
         assert self.client.driver.current_url == 'https://vrm.victronenergy.com/login'
+
+    def tearDown(self) -> None:
+        """
+        Close the driver
+        """
+        self.client.driver.close()
