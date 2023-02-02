@@ -34,7 +34,8 @@ To install the project dependencies, use the following commands:
 2. pipenv shell (to create a new virtual environment and activate it)
 
 To run all tests in the /tests directory, run the following command:
-python -m unittest discover -s tests -p '*.py'
+For Mac terminal - python -m unittest discover -s tests -p '*.py'
+For Windows command line - python -m unittest discover -s tests -p *.py
 
 
 
