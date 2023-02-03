@@ -25,29 +25,29 @@ This repository contains the following:
 
 # Instructions to run the test cases 
 
-0. We assume that your system has:
-	a. python 3.10 (or a higher version) installed,
-	b. browser Chrome or Firefox installed, and
+0. We assume that your system has:<br/>
+	a. python 3.10 (or a higher version) installed,<br/>
+	b. browser Chrome or Firefox installed, and<br/>
 	c. a connection to the Internet.
 
 1. The project dependencies lie inside the `Pipfile`. It uses Python's Pipenv tool to install dependencies. 
 If you don't have Pipenv installed on your device, run the following command on your terminal: `pip install pipenv`
 
-2. To install the project dependencies, use the following commands:
-	a. `pipenv sync` (to download all dependencies from the Pipfile)
+2. To install the project dependencies, use the following commands:<br/>
+	a. `pipenv sync` (to download all dependencies from the Pipfile)<br/>
 	b. `pipenv shell` (to create a new virtual environment and activate it)
 
-3. By default, the Chrome browser is used to execute the tests. If you want to use Firefox instead, you change the used webdriver in method `initialize_webdriver()` of file `/helpers/selenium_helper.py`:
-	a. Comment out the return statement to use the Chrome webdriver
+3. By default, the Chrome browser is used to execute the tests. If you want to use Firefox instead, you change the used webdriver in method `initialize_webdriver()` of file `/helpers/selenium_helper.py`:<br/>
+	a. Comment out the return statement to use the Chrome webdriver<br/>
 	b. Remove comment in front of the return statement to use the Firefox webdriver
 
 
-4. To run all tests in the /tests directory, run the following command in a terminal:
-	a. Mac/Linux: `python -m unittest discover -s tests -p '*.py'`
+4. To run all tests in the /tests directory, run the following command in a terminal:<br/>
+	a. Mac/Linux: `python -m unittest discover -s tests -p '*.py'`<br/>
 	b. Windows: `python -m unittest discover -s tests -p *.py`
 
-5. Note: by default 5 out of 6 test cases of MyDay are skipped, with the following message: "To run this test case, enter the email and password of your Myday.me account in the file TODOs". To execute these test cases, you need to insert the email and password test inputs in the test cases. Do this as follows:
-	a. Create an account at the MyDay website.
+5. Note: by default 5 out of 6 test cases of MyDay are skipped, with the following message: "To run this test case, enter the email and password of your Myday.me account in the file TODOs". To execute these test cases, you need to insert the email and password test inputs in the test cases. Do this as follows:<br/>
+	a. Create an account at the MyDay website.<br/>
 	b. Enter the email and password of your MyDay account in the file `tests/test_myday.py` at the 2 lines with a `TODO` comment.
 
 
