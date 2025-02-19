@@ -1,54 +1,94 @@
-# userstories-to-testcases
+# User Stories to Test Cases
 
-This repository is the artefact for the research paper: "From User Stories to End-to-end Web Testing" by
-Humaid Mollah and Petra van den Bos (Formal Methods and Tools Group, University of Twente, Enschede, The Netherlands).
-The paper has been submitted at ICTS workshop INTUITESTBEDS 2023.
+This repository is the artifact for the research paper: **"From User Stories to End-to-End Web Testing"** by
+Humaid Mollah and Petra van den Bos (Formal Methods and Tools Group, University of Twente, Enschede, The Netherlands). The paper has been submitted to the ICTS workshop INTUITESTBEDS 2023.
 
-This repository contains the following:
+## Repository Contents
 
-1. Source code for the test cases of the case studies of the paper
-2. Interview transcripts of the interviews with the software developers and testers of the digital development agency El nino
+This repository contains:
 
-# Case study web applications
+1. Source code for the test cases used in the case studies discussed in the paper.
+2. Interview transcripts from discussions with software developers and testers at the digital development agency **El Nino**.
 
-1. MyDay: https://app.myday.me
-2. VRM: https://vrm.victronenergy.com
-3. Utwente People: https://people.utwente.nl/
+## Case Study Web Applications
 
-# Project Structure
+1. **MyDay**: [https://app.myday.me](https://app.myday.me)
+2. **VRM**: [https://vrm.victronenergy.com](https://vrm.victronenergy.com)
+3. **Utwente People**: [https://people.utwente.nl/](https://people.utwente.nl/)
 
-`/tests` - Contains test case implementations for Myday, VRM, and Utwente People web applications <br />
-`/user_actions` - Contains user actions implementations with the help of Selenium web driver <br />
-`/helper` - Contains helper fuctions created with the selenium web driver <br />
-`main.py` - Code to run all test case implementations and to generate reports <br />
-`interview_transcripts.pdf` - Contains the interview transcripts
+## Project Structure
 
-# Instructions to run the test cases 
+- `/tests` - Contains test case implementations for MyDay, VRM, and Utwente People web applications.
+- `/user_actions` - Contains user action implementations using the Selenium WebDriver.
+- `/helper` - Contains helper functions for Selenium WebDriver operations.
+- `main.py` - Entry point to run all test cases and generate reports.
+- `interview_transcripts.pdf` - Contains the interview transcripts.
 
-0. We assume that your system has:<br/>
-	a. python 3.10 (or a higher version) installed,<br/>
-	b. browser Chrome or Firefox installed, and<br/>
-	c. a connection to the Internet.
+## Instructions to Run the Test Cases
 
-1. The project dependencies lie inside the `Pipfile`. It uses Python's Pipenv tool to install dependencies. 
-If you don't have Pipenv installed on your device, run the following command on your terminal: `pip install pipenv`
+### Prerequisites
 
-2. To install the project dependencies, use the following commands:<br/>
-	a. `pipenv sync` (to download all dependencies from the Pipfile)<br/>
-	b. `pipenv shell` (to create a new virtual environment and activate it)
+Ensure that your system meets the following requirements:
 
-3. By default, the Chrome browser is used to execute the tests. If you want to use Firefox instead, you change the used webdriver in method `initialize_webdriver()` of file `/helpers/selenium_helper.py`:<br/>
-	a. Comment out the return statement to use the Chrome webdriver<br/>
-	b. Remove comment in front of the return statement to use the Firefox webdriver
+1. **Python 3.10 or higher** is installed.
+2. **Google Chrome or Mozilla Firefox** is installed.
+3. **Stable Internet connection** is available.
 
+### Setup Instructions
 
-4. To run all tests in the /tests directory, run the following command in a terminal:<br/>
-	a. Mac/Linux: `python -m unittest discover -s tests -p '*.py'`<br/>
-	b. Windows: `python -m unittest discover -s tests -p *.py`
+1. The project dependencies are managed using **Pipenv**. If Pipenv is not installed, run the following command:
+   ```sh
+   pip install pipenv
+   ```
 
-5. Note: by default 5 out of 6 test cases of MyDay are skipped, with the following message: "To run this test case, enter the email and password of your Myday.me account in the file TODOs". To execute these test cases, you need to insert the email and password test inputs in the test cases. Do this as follows:<br/>
-	a. Create an account at the MyDay website.<br/>
-	b. Enter the email and password of your MyDay account in the file `tests/test_myday.py` at the 2 lines with a `TODO` comment.
+2. Install the required dependencies by running:
+   ```sh
+   pipenv sync
+   ```
 
+3. Activate the virtual environment:
+   ```sh
+   pipenv shell
+   ```
 
+### Configuring the WebDriver
+
+By default, the test cases run using **Google Chrome**. If you prefer to use **Firefox**, update the `initialize_webdriver()` method in `/helper/selenium_helper.py`:
+
+1. Comment out the line that initializes the Chrome WebDriver.
+2. Uncomment the line that initializes the Firefox WebDriver.
+
+### Running the Test Cases
+
+To execute all test cases in the `/tests` directory, use the following command:
+
+#### Mac/Linux:
+```sh
+python -m unittest discover -s tests -p '*.py'
+```
+
+#### Windows:
+```sh
+python -m unittest discover -s tests -p *.py
+```
+
+### Running MyDay Test Cases
+
+By default, **5 out of 6 MyDay test cases are skipped** with the following message:
+
+> "To run this test case, enter the email and password of your MyDay.me account in the file TODOs."
+
+To enable these test cases:
+
+1. **Create a MyDay account** at [https://app.myday.me](https://app.myday.me).
+2. **Provide your MyDay credentials**:
+   - Open `tests/test_myday.py`.
+   - Locate the lines marked with `TODO` comments.
+   - Enter your MyDay email and password in the respective placeholders.
+
+After completing the setup, re-run the test cases using the `unittest` command mentioned earlier.
+
+---
+
+For any issues or questions, feel free to reach out!
 
