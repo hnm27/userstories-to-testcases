@@ -8,7 +8,7 @@ Humaid Mollah and Petra van den Bos (Formal Methods and Tools Group, University 
 This repository contains:
 
 1. Source code for the test cases used in the case studies discussed in the paper.
-2. Interview transcripts from discussions with software developers and testers at the digital development agency **El Nino**.
+2. Interview transcripts from discussions with software developers and testers at the digital development agency **[El Nino](https://elnino.tech/)**.
 
 ## Case Study Web Applications
 
